@@ -12,6 +12,23 @@ alwaysApply: false
 - Keep commits atomic and focused on single changes
 - Include detailed descriptions in commit body when needed
 
+## Commit Granularity Guidelines
+- **One logical change per commit**: Each commit should represent a single, complete logical change
+- **Separate concerns**: Don't mix different types of changes (e.g., feature + documentation)
+- **Logical grouping**: Group related changes that form a cohesive unit
+- **Testable units**: Each commit should be independently testable and reviewable
+
+### Granularity Examples
+```
+# Good: Separate commits for different concerns
+feat: add user authentication endpoint
+docs: update API documentation for auth endpoints
+test: add unit tests for authentication logic
+
+# Bad: Mixing different concerns
+feat: add auth endpoint and update docs and tests
+```
+
 ## Commit Examples
 ```
 feat: add new HTMX endpoint for user interactions
@@ -20,6 +37,13 @@ docs: update README with setup instructions
 chore: update dependencies to latest versions
 refactor: extract common HTML templates
 ```
+
+## Step-by-Step Commit Process
+1. **Identify logical units**: Break down changes into logical, atomic units
+2. **Stage related files**: Use `git add` for files that belong to the same logical change
+3. **Write descriptive message**: Use conventional commit format with clear description
+4. **Review before commit**: Ensure the commit represents a complete, testable change
+5. **Repeat for next unit**: Move to the next logical unit and repeat the process
 
 ## Project Structure
 - Use Bun runtime for development
