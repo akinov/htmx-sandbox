@@ -47,6 +47,9 @@ bun run test:e2e
 
 # 全テスト実行
 bun run test:all
+
+# TypeScript型チェック
+bun run typecheck
 ```
 
 ## テスト戦略
@@ -127,6 +130,18 @@ refactor: 共通HTMLテンプレートを抽出
 - ワイルドカードインポートよりも明示的なインポートを優先
 - 意味のある変数名と関数名を使用
 - ファイル操作にはエラーハンドリングを追加
+
+## CI/CD
+
+### GitHub Actions
+- **トリガー**: プルリクエストとmainブランチへのpush
+- **実行内容**:
+  - TypeScript型チェック (`bun run typecheck`)
+  - ユニットテスト (`bun run test`)
+  - E2Eテスト (`bun run test:e2e`)
+- **環境**: Ubuntu latest + Bun latest
+- **キャッシュ**: 依存関係をキャッシュして高速化
+- **アーティファクト**: Playwrightテストレポートを30日間保存
 
 ## プロジェクト構造ルール
 
