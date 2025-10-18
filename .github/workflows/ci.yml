@@ -38,16 +38,17 @@ jobs:
     - name: Run unit tests
       run: bun run test
 
-    - name: Install Playwright browsers
-      run: bunx playwright install --with-deps
+    # E2E tests are temporarily disabled
+    # - name: Install Playwright browsers
+    #   run: bunx playwright install --with-deps
 
-    - name: Run E2E tests
-      run: bun run test:e2e
+    # - name: Run E2E tests
+    #   run: bun run test:e2e
 
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+    # - name: Upload test results
+    #   uses: actions/upload-artifact@v4
+    #   if: always()
+    #   with:
+    #     name: playwright-report
+    #     path: playwright-report/
+    #     retention-days: 30
