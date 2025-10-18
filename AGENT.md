@@ -17,9 +17,17 @@
 src/
 ├── index.ts                 # エントリーポイント（サーバー起動）
 ├── app.ts                   # Honoアプリインスタンスとルート登録
+├── app.test.ts              # アプリ全体のテスト
 └── routes/
-    ├── index.ts             # / (ルート) のハンドラー
-    └── clicked.ts           # /clicked のハンドラー
+    ├── index/
+    │   ├── index.ts         # / (ルート) のハンドラー
+    │   └── index.test.ts    # ルートハンドラーのテスト
+    └── clicked/
+        ├── index.ts         # /clicked のハンドラー
+        └── index.test.ts    # クリックハンドラーのテスト
+
+e2e/
+└── app.spec.ts              # E2Eテスト
 ```
 
 ## 開発コマンド
@@ -30,6 +38,43 @@ bun run dev
 
 # 本番サーバー起動
 bun run start
+
+# ユニットテスト実行
+bun run test
+
+# E2Eテスト実行
+bun run test:e2e
+
+# 全テスト実行
+bun run test:all
+```
+
+## テスト戦略
+
+### ユニットテスト（Vitest）
+- 各ルートハンドラーの単体テスト
+- HTMLレスポンスの内容確認
+- HTMX属性の検証
+
+### E2Eテスト（Playwright）
+- ブラウザでの実際の動作確認
+- HTMXの動的更新の検証
+- ユーザーインタラクションのテスト
+
+### テストファイル構造
+```
+src/
+├── app.test.ts
+└── routes/
+    ├── index/
+    │   ├── index.ts
+    │   └── index.test.ts
+    └── clicked/
+        ├── index.ts
+        └── clicked.test.ts
+
+e2e/
+└── app.spec.ts
 ```
 
 ## Commit規約
