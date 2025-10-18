@@ -1,0 +1,17 @@
+{
+  "name": "htmx-sandbox",
+  "version": "1.0.0",
+  "description": "HTMX sandbox with Hono server",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "start": "bun run src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^4.10.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "type": "module"
+}
